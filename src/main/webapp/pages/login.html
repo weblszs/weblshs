@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+<!--    <link href="../css/login.css" rel="stylesheet">-->
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: url(../imgs/Desert.jpg) no-repeat 0px 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        #loginDiv {
+            width: 380px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 380px;
+            background-color: rgba(75, 81, 95, 0.3);
+            box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);
+            border-radius: 5px;
+        }
+        #loginMsg{
+            text-align: center;
+            color: aliceblue;
+        }
+    </style>
+    <link rel="stylesheet" href="../plugins/elementui/index.css">
+</head>
+<body>
+<div id="app">
+    <h1 id="loginMsg">LOGIN IN</h1>
+    <div id="loginDiv" >
+        <el-form :model="dataForm"    class="demo-ruleForm" ref="dataForm">
+
+            <el-form-item label="邮箱" prop="email" >
+                <el-input  v-model="dataForm.email" ></el-input>
+            </el-form-item>
+
+            <el-form-item label="密码" prop="password">
+                <el-input  type="password" v-model="dataForm.password" ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" @click="quitSubmit()">提交</el-button>
+                <el-button @click="resetForm('dataForm')">重置</el-button>
+                <a href="register.html">没有账号？注册一个</a>
+            </el-form-item>
+        </el-form>
+    </div>
+
+</div>
+
+</body>
+
+<!-- 引入组件库 -->
+
+<script src="../js/vue.js"></script>
+
+<script src="../plugins/elementui/index.js"></script>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+<script src="../js/axios-0.18.0.js"></script>
+
+<script>
+
+    var vue = new Vue({
+
+        el: '#app',
+        data:{
+                dataForm: {
+                    email: '',
+                    password:''
+                }
+        },
+
+        methods: {
+            quitSubmit(){
+                var a=this.dataForm.email;
+                var b=this.dataForm.password;
+                axios.post("/users",this.dataForm).then((res)=>{
+                     console.log(res.data.code);
+                     console.log(this.dataForm.email);
+                     console.log(this.dataForm.password);
+
+                    if(res.data.code == 20011){
+                        localStorage.setItem("key",a);
+                        location.href="/pages/courses.html";
+                    }else{
+                        this.$message.error(res.data.msg);
+                    }
+                });
+
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+        }
+    })
+
+
+</script>
+
+</html>

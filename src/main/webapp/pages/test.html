@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <!--    <link href="../css/login.css" rel="stylesheet">-->
+
+</head>
+<body>
+<div id="app">
+  <h1 id="loginMsg">LOGIN IN</h1>
+  <div id="loginDiv" >
+    <el-form :model="dataForm"    class="demo-ruleForm" ref="dataForm">
+
+      <el-form-item label="邮箱" prop="email">
+        <el-input  v-model="dataForm.email" ></el-input>
+      </el-form-item>
+
+      <el-form-item label="密码" prop="password">
+        <el-input  type="password" v-model="dataForm.password" ></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="quitSubmit()">提交</el-button>
+        <el-button @click="resetForm('dataForm')">重置</el-button>
+        <el-button type="primary" @click="quitSubmit()"><div id="laE"></div></el-button>
+        <div>
+          <el-link href="https://element.eleme.io" target="_blank">默认链接</el-link>
+          <el-link type="primary">主要链接</el-link>
+          <el-link type="success">成功链接</el-link>
+          <el-link type="warning">警告链接</el-link>
+          <el-link type="danger">危险链接</el-link>
+          <el-link type="info">信息链接</el-link>
+        </div>
+
+      </el-form-item>
+    </el-form>
+  </div>
+
+</div>
+
+</body>
+
+<!-- 引入组件库 -->
+
+<link rel="stylesheet" href="../plugins/elementui/index.css">
+
+<script src="../js/vue.js"></script>
+
+<script src="../plugins/elementui/index.js"></script>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+
+<script src="../js/axios-0.18.0.js"></script>
+
+<script>
+
+
+  var lae = localStorage.getItem("key");
+  laE.innerHTML=lae;
+  console.log(lae)
+
+  var vue = new Vue({
+
+    el: '#app',
+    data:{
+      dataForm: {
+        email: '',
+        password:''
+      }
+    },
+
+    methods: {
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+    }
+  })
+
+
+</script>
+
+</html>

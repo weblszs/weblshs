@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:38:01 +0800] "GET / HTTP/1.1" 200 57 http-bio-80-exec-1 370
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:38:21 +0800] "GET /pages/courses.html HTTP/1.1" 200 10925 http-bio-80-exec-2 19
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:38:21 +0800] "GET /courses HTTP/1.1" 200 409 http-bio-80-exec-3 243
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:38:27 +0800] "GET /courses/1 HTTP/1.1" 200 98 http-bio-80-exec-4 14
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:42:29 +0800] "GET /pages/courses.html HTTP/1.1" 200 10949 http-bio-80-exec-6 3
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:42:30 +0800] "GET /courses HTTP/1.1" 200 409 http-bio-80-exec-7 7
+0:0:0:0:0:0:0:1 - - [03/May/2023:23:42:31 +0800] "GET /courses/1 HTTP/1.1" 200 98 http-bio-80-exec-8 4
